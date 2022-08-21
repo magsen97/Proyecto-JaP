@@ -188,3 +188,28 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+form {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+form h1 {
+  font-weight: bolder;
+}
+
+form .botonr {
+  background-color: #0087F7;
+  color: white;
+  border-color: #53C0FB;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+form .error{
+  color:red
+}
+
+form .bordeError{
+  border-color: red;
+}
