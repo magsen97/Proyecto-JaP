@@ -39,3 +39,19 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+  perfilUsuario();
+})
+
+
+function perfilUsuario() {
+  let user = localStorage.getItem("Usuario")
+  if(user!=""){
+      document.getElementById("perfil").innerHTML = `
+      <a class="nav-link" href="my-profile.html">${user}</a>`
+  }else{
+      document.getElementById("perfil").innerHTML = `
+      <a class="nav-link" href="my-profile.html">Perfil</a>`
+  }
+}
