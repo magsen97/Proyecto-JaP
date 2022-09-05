@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 function perfilUsuario() {
-  let user = localStorage.getItem("Usuario")
+  let user = localStorage.getItem("Usuario")                      //Toma los datos del registro de seccion y los muestra.
   if(user!=""){
       document.getElementById("perfil").innerHTML = `
       <a class="nav-link" href="my-profile.html">${user}</a>`

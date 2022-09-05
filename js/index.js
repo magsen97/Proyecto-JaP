@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(){
         avisoEmail.innerHTML = "";                                                           //Para que no me muestre el aviso de que faltan datos                               
         avisoPass.innerHTML = "";                                                            //Para que no me muestre el aviso de que faltan datos
         
-
+        
         if(name.value == ""){
             avisoName.innerHTML = "Ingrese su nombre de usuario"
             name.classList.add('bordeError');
@@ -78,11 +78,11 @@ document.addEventListener("DOMContentLoaded", function(){
             vpassword = true
         }
 
-        if(vname && vemail && vpassword){                                                            //Si los valores son true, se ejecuta la funcion
+        if(vname && vemail && vpassword){                       //Si los valores son true, se ejecuta la funcion y Guardo los datos en localStorage    
             localStorage.setItem("Usuario",name.value);
             localStorage.setItem("Email",email.value);
             localStorage.setItem("Contrasena",password.value);
-            redirigir()
+            redirigir()                                             
         }
     })
     
