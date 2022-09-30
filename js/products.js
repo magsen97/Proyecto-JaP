@@ -22,7 +22,7 @@ function mostrarListaProductos(listaP){      // Funcion para mostrar lista de pr
             if ((filtrarBuscador == undefined || filtrarBuscador == "" || product.name.toLowerCase().indexOf(filtrarBuscador.toLowerCase()) > -1) ||
                 (filtrarBuscador == undefined || filtrarBuscador == "" || product.description.toLowerCase().indexOf(filtrarBuscador.toLowerCase()) > -1)){  //Filtro en donde buscar.
                 htmlMostrarproduct += `
-                <div class="list-group-item list-group-item-action cursor-active">
+                <div class="list-group-item list-group-item-action cursor-active" onClick=redirigirInfo("ProductoIndividual",${(product.id)})>
                     <div class="row">
                        <div class="col-3">
                             <img src="${product.image}" alt="product image" class="img-thumbnail">
@@ -39,6 +39,7 @@ function mostrarListaProductos(listaP){      // Funcion para mostrar lista de pr
                     </div>
                 </div>
                 `;
+                
                 document.getElementById("muestra").innerHTML = htmlMostrarproduct;    //Agrego el contenido de arriba a products.html en la seccion main.
             }
         }
@@ -47,22 +48,24 @@ function mostrarListaProductos(listaP){      // Funcion para mostrar lista de pr
 }
 
 
+
+
 let datos                                                           //Variable donde guardo los objetos del .json para otros usos.
 document.addEventListener("DOMContentLoaded", function(){           //Se espera a cargar la pagina.
     let url_listado = PRODUCTS_URL+aMostrar+EXT_TYPE;               //Creo la string para obtener el enlace usando el catID.
-    console.log(url_listado);
 
     getJSONData(url_listado).then(function(resultObj){              //Obtengo el objeto del getJSONData con los atributos 'datos' y 'status'.
         if (resultObj.status === "ok") {                            //Si todo va correcto sigo.
             datos = resultObj.data;                                 //Separo el objeto que obtengo de datos, el cual contiene 'CATID', 'CATNAME' y 'products'.
             aMostrarlistado = datos.products;                       //Obtengo una lista con solo los objetos 'products'.
+            console.log(aMostrarlistado)
+            
             mostrarListaProductos(aMostrarlistado);                                //Inicio la funcion para mostrar la lista de productos en el .json correspondiente.
         }else{
             alert("Hay problemas: "+resultObj.data);                //Si algo falla muestro un error.
         }
     });
 
-    
 
     document.getElementById("botonFiltrar").addEventListener("click", function(){           //Funcionalidad de filtrado.
         minCost = document.getElementById("filtrarCostMin").value;                          //Valor colocado en la casilla Min.
@@ -78,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function(){           //Se espera 
         }else{
             maxCost = undefined;                                                            //No tomo el valor de Max. si sucede algo diferente a lo de arriba
         }
-
+        console.log(aMostrarlistado)
         mostrarListaProductos(aMostrarlistado);                                                            //Voy a la funcion del comienzo
     });
 
@@ -87,7 +90,8 @@ document.addEventListener("DOMContentLoaded", function(){           //Se espera 
         document.getElementById("filtrarCostMax").value = "";
         minCost = undefined;
         maxCost = undefined;
-
+        
+        console.log(aMostrarlistado)
         mostrarListaProductos(aMostrarlistado);                                                            //Se reestablezen todos los valores y se muestran los productos
     });
 
@@ -121,20 +125,32 @@ document.addEventListener("DOMContentLoaded", function(){           //Se espera 
 
     let activoBoton = false                                                             //Compruevo de el boton ya fue activado?
     document.getElementById("relevancia").addEventListener("click", function(){         //Funcionalidad de ordenar descendentemente por productos vendidos.
-        console.log(activoBoton)
 
         if (activoBoton == false) {                                                     //Si el boton no se presiono, ordeno.
             aMostrarlistado.sort(function (a, b) {                                      //Funcion para ordenar
                 return a.soldCount - b.soldCount                                        //Ordeno desendente
             })
-            
-            console.log(activoBoton)
+            console.log(aMostrarlistado)
             mostrarListaProductos(aMostrarlistado);
         }
     });
 
     document.getElementById("buscador").addEventListener("input", function(){          //Funcionalidad de buscador.
         filtrarBuscador = document.getElementById("buscador").value;
+        console.log(aMostrarlistado)
         mostrarListaProductos(aMostrarlistado);
-    })
+    });
+
+    
+    /* document.getElementById(aMostrarlistado.id).addEventListener("click", function() {
+        console.log(aMostrarlistado.id)
+        
+    }) */
+
 });
+
+
+function redirigirInfo(nombre, ID){
+    localStorage.setItem(nombre, ID)
+    window.location.href="product-info.html";
+}

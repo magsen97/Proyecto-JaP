@@ -49,9 +49,26 @@ function perfilUsuario() {
   let user = localStorage.getItem("Usuario")                      //Toma los datos del registro de seccion y los muestra.
   if(user!=""){
       document.getElementById("perfil").innerHTML = `
-      <a class="nav-link" href="my-profile.html">${user}</a>`
+      <div class="btn-group me-2">
+        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+          ${user}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+          <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+          <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+          <li><a class="dropdown-item" href="index.html" onClick=closeSession()>Cerrar sesión</a></li>
+        </ul>
+      </div>
+      `
   }else{
       document.getElementById("perfil").innerHTML = `
-      <a class="nav-link" href="my-profile.html">Perfil</a>`
+      <a class="nav-link" href="index.html">Perfil</a>`
   }
+}
+
+
+function closeSession(){
+  localStorage.removeItem("Usuario");
+  localStorage.removeItem("Email");
+  localStorage.removeItem("Contrasena");
 }

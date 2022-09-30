@@ -191,8 +191,6 @@ a.custom-card:hover {
 
 
 
-
-
 form {
   text-align: center;
   font-family: sans-serif;
@@ -216,4 +214,42 @@ form .error{
 
 form .bordeError{
   border-color: red;
+}
+
+
+.infostyle{
+  margin: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div .infostyle{
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+
+.comentS{
+  font-family: Arial, sans-serif;
+  padding: 5px;
+  border: solid rgba(54, 54, 54, 0.397) 1px;
+}
+
+.images{
+  width: 300px;
+  margin: 5px;
+  padding: 5px;
+}
+
+#comentarform{
+  text-align: justify;
+  font-family: Arial, sans-serif;
+}
+
+.comar{
+  font-family: Arial;
+  background-color: #0082ec;
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: #53C0FB;
 }
