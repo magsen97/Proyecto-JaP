@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
     htmlLoginModificado  = `
-    <form action="" method="" id="formulario">
+    <form action="" method="" id="formulario" style="font-family: sans-serif;">
         <div>
-            <img src="img/login.png" alt="" width="350" height="150">
-            <h1>Inicio de sesion</h1>
+            <img src="img/login.png" alt="" width="350" height="150" class="mb-4">
+            <h1 class="h3 mb-3 fw-normal">Inicio de sesion</h1>
             <div class="contenidoForm">
                 <div class="name">
                     <label for="name">Nombre de Usuario</label><br>
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     <small id="avisoPass" class="error"></small>
                 </div>
                 <br>
-                <input type="submit" value="Ingresar" id="rBoton" class="botonr">
+                <input type="submit" value="Ingresar" id="rBoton" class="w-30 btn btn-lg btn-primary">
             </div>
         </div>
     </form>`

@@ -141,12 +141,6 @@ document.addEventListener("DOMContentLoaded", function(){           //Se espera 
         mostrarListaProductos(aMostrarlistado);
     });
 
-    
-    /* document.getElementById(aMostrarlistado.id).addEventListener("click", function() {
-        console.log(aMostrarlistado.id)
-        
-    }) */
-
 });
 
 

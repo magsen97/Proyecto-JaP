@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 function perfilUsuario() {
   let user = localStorage.getItem("Usuario")                      //Toma los datos del registro de seccion y los muestra.
-  if(user!=""){
+  if(user){
       document.getElementById("perfil").innerHTML = `
       <div class="btn-group me-2">
         <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">

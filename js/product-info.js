@@ -2,103 +2,109 @@ let IDproducto = localStorage.getItem("ProductoIndividual")
 let user = localStorage.getItem("Usuario")
 
 
-
 function mostrarProducto(productoInfo){
     let htmlMostrarProductInfo = "";
     let product = productoInfo;
-    let imag = ""
-    let indicadorCarrusel = ""
-    for(let i = 0; i < product.images.length; i++) {
-        if (i == 0){
-            indicadorCarrusel += `
-                <button type="button" data-bs-target="#carouselConIndicadores" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label="Slide ${i+1}"></button>
-            `}
-        if (i >= 1){
-            indicadorCarrusel += `
-            <button type="button" data-bs-target="#carouselConIndicadores" data-bs-slide-to="${i}" aria-label="Slide ${i+1}"></button>
-            `}
-    }
-    for(let i = 0; i < product.images.length; i++) {
-        if (i == 0){
-            imag += `
-            <div class="carousel-item active">
-                <img src="${product.images[i]}" class="d-block w-100" alt="..."></img>
-            </div>`}
-        if (i >= 1){
-            imag += `
-            <div class="carousel-item">
-                <img src="${product.images[i]}" class="d-block w-100" alt="..."></img>
-            </div>`}
-    }
+    let imag = "";
+    let indicadorCarrusel = "";
     console.log(imag)
     htmlMostrarProductInfo += `
-    <div class="infostyle">
-    <br>
-        <div>
-            <h1>${product.name}.</h1>
-        </div>
-        <br>
-        <hr>
-        <div>
-            <h4>Precio</h4>
-            <P>${product.currency} ${product.cost}</p>
-        </div>
-        <br>
-        <div>
-            <h4>Descripcion</h4>
-            <P>${product.description}</p>
-        </div>
-        <br>
-        <div>
-            <h4>Categoria</h4>
-            <P>${product.category}</p>
-        </div>
-        <br>
-        <div>
-            <h4>Cantidad de vendidos</h4>
-            <P>${product.soldCount}</p>
-        </div>
-        <br>
-        <div>
-            <h4>Imagenes ilustrativas</h4> 
-        </div>
-        <br>
-        <div id="carouselConIndicadores" class="carousel slide" style="width: 50%;" data-bs-ride="carousel" data-bs-interval="2000">
-            <div class="carousel-indicators">
-                ${indicadorCarrusel}
+        <div class="infostyle">
+            <br>
+            <div>
+                <h1>${product.name}.</h1>
             </div>
-            <div class="carousel-inner rounded">
-                ${imag}
+            <br>
+            <hr>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-outline-dark" onClick= volverLproduct()><i class="bi bi-arrow-left"></i>Volver a ver productos</button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselConIndicadores" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselConIndicadores" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </button>
-        </div>
-    </div>    
-    `;
-                
-    document.getElementById("contenedor").innerHTML = htmlMostrarProductInfo;
+            <div>
+                <h4>Precio</h4>
+                <P>${product.currency} ${product.cost}</p>
+            </div>
+            <br>
+            <div>
+                <h4>Descripcion</h4>
+                <P>${product.description}</p>
+            </div>
+            <br>
+            <div>
+                <h4>Categoria</h4>
+                <P>${product.category}</p>
+            </div>
+            <br>
+            <div>
+                <h4>Cantidad de vendidos</h4>
+                <P>${product.soldCount}</p>
+            </div>
+            <br>
+            <div>
+                <h4>Imagenes ilustrativas</h4> 
+            </div>
+            <br>
+            <div id="carouselConIndicadores" class="carousel slide" style="width: 50%;" data-bs-ride="carousel" data-bs-interval="2000">
+                <div class="carousel-indicators" id="indicadorCarrusel">
+                    
+                </div>
+                <div class="carousel-inner rounded" id="imagCarrusel">
+                    
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselConIndicadores" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselConIndicadores" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>    
+        `;          
+        document.getElementById("contenedor").innerHTML = htmlMostrarProductInfo;
+        
+        for(let i = 0; i < product.images.length; i++) {
+            if (i == 0){
+                indicadorCarrusel += `
+                    <button type="button" data-bs-target="#carouselConIndicadores" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label="Slide ${i+1}"></button>
+                `}
+            if (i >= 1){
+                indicadorCarrusel += `
+                <button type="button" data-bs-target="#carouselConIndicadores" data-bs-slide-to="${i}" aria-label="Slide ${i+1}"></button>
+                `}
+            }
+            document.getElementById("indicadorCarrusel").innerHTML = indicadorCarrusel;
+
+            for(let i = 0; i < product.images.length; i++) {
+                if (i == 0){
+                    imag += `
+                    <div class="carousel-item active">
+                    <img src="${product.images[i]}" class="d-block w-100" alt="..."></img>
+                    </div>`}
+                    if (i >= 1){
+                        imag += `
+                    <div class="carousel-item">
+                        <img src="${product.images[i]}" class="d-block w-100" alt="..."></img>
+                        </div>`}
+                    }
+            document.getElementById("imagCarrusel").innerHTML = imag;
 }
-
-
-
 
 function MostrarComentarios(comentariosInfo) {
     let datosObj = comentariosInfo
     let htmlMostrarcomentInfo = "<br><h3>Comentarios</h3><br>";
-    for(let elem = 0; elem < datosObj.length; elem++) {
-        let coment = datosObj[elem];
-        htmlMostrarcomentInfo += `
-        <div class="comentS">
-            <strong>${coment.user}</strong> - ${coment.dateTime} - ${calificar(coment.score)} <br>
-            ${coment.description}
-        </div>
-        `;
+    if (datosObj.length>=1){
+        for(let elem = 0; elem < datosObj.length; elem++) {
+            let coment = datosObj[elem];
+            htmlMostrarcomentInfo += `
+            <div class="comentS">
+                <strong>${coment.user}</strong> - ${coment.dateTime} - ${calificar(coment.score)} <br>
+                ${coment.description}
+            </div>
+            `;
+        }
+    }else{
+        htmlMostrarcomentInfo += `<p><strong>Se el primero en comentar sobre este producto</strong></p>`
     }
 
     htmlMostrarcomentInfo += `
@@ -132,8 +138,6 @@ function fecha(){
     return dateTime
 }
 
-
-
 function calificar(calificacion) {
     let puntaje = calificacion
     let star = ""
@@ -146,7 +150,6 @@ function calificar(calificacion) {
     }
     return star
 }
-
 
 function nuevoCom(){
     let Opinion = document.getElementById("opinion").value;
@@ -163,7 +166,6 @@ function nuevoCom(){
     localStorage.setItem("Comentarios",ComentariosProducto);
     MostrarComentarios(ComentariosProducto)
 }
-
 
 function MostrarProductosRelacionados(PRel){
     let htmlMostrarProductRel = ""
@@ -189,14 +191,17 @@ function redirigirInfo(nombre, ID){
     window.location.href="product-info.html";
 }
 
+function volverLproduct() {
+    window.location = "products.html";
+}
 
 document.addEventListener("DOMContentLoaded", function(){
 
     let url_producto = PRODUCT_INFO_URL+IDproducto+EXT_TYPE;
+    console.log(url_producto)
     getJSONData(url_producto).then(function(resultObj){
         if (resultObj.status === "ok") {
             ObjetoProducto = resultObj.data;
-
             mostrarProducto(ObjetoProducto);
         }else{
             alert("Hay problemas: "+resultObj.data);
@@ -225,22 +230,5 @@ document.addEventListener("DOMContentLoaded", function(){
             alert("Hay problemas: "+resultObj.data);
         }
     });
-
-    /* document.getElementById("publicarCom").addEventListener("click", function(){
-        let Opinion = document.getElementById("opinion").value;
-        console.log(Opinion)
-        let Estrellas = document.getElementById("estrellas").value;
-        console.log(Estrellas)
-        let lCom = []
-        console.log(ComentariosProducto)
-        if (Opinion && Estrellas){
-            ComentariosProducto.push({"product": IDproducto, "score": Estrellas, "description": Opinion, "user": user, "dateTime": fecha()})
-        }
-        
-        console.log(ComentariosProducto)
-        localStorage.setItem("Comentarios",ComentariosProducto);
-        MostrarComentarios(ComentariosProducto)
-    }) */
-
 })
 
