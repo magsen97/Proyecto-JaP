@@ -9,11 +9,11 @@ const EXT_TYPE = ".json";
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
-}
+};
 
 let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
-}
+};
 
 let getJSONData = function(url){
     let result = {};
@@ -38,20 +38,20 @@ let getJSONData = function(url){
         hideSpinner();
         return result;
     });
-}
+};
 
 document.addEventListener("DOMContentLoaded", function(){
   perfilUsuario();
-})
+});
 
 
 function perfilUsuario() {
-  let user = localStorage.getItem("Usuario")                      //Toma los datos del registro de seccion y los muestra.
-  if(user){
+  const Email = localStorage.getItem("Email")                      //Toma los datos del registro de seccion y los muestra.
+  if(Email){
       document.getElementById("perfil").innerHTML = `
       <div class="btn-group me-2">
         <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-          ${user}
+          ${Email}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
           <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
@@ -64,11 +64,12 @@ function perfilUsuario() {
       document.getElementById("perfil").innerHTML = `
       <a class="nav-link" href="index.html">Perfil</a>`
   }
-}
+};
 
 
 function closeSession(){
-  localStorage.removeItem("Usuario");
   localStorage.removeItem("Email");
   localStorage.removeItem("Contrasena");
-}
+};
+
+

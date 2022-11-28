@@ -5,7 +5,7 @@ let aMostrar = localStorage.getItem("catID");   //Guardo en localStorage el iden
 let aMostrarlistado = [];     //Variable donde se guardan los datos del listado.
 let minCost = undefined;
 let maxCost = undefined;
-let filtrarBuscador = undefined
+let filtrarBuscador = undefined;
 
 
 
@@ -45,7 +45,7 @@ function mostrarListaProductos(listaP){      // Funcion para mostrar lista de pr
         }
         
     }
-}
+};
 
 
 
@@ -58,12 +58,11 @@ document.addEventListener("DOMContentLoaded", function(){           //Se espera 
         if (resultObj.status === "ok") {                            //Si todo va correcto sigo.
             datos = resultObj.data;                                 //Separo el objeto que obtengo de datos, el cual contiene 'CATID', 'CATNAME' y 'products'.
             aMostrarlistado = datos.products;                       //Obtengo una lista con solo los objetos 'products'.
-            console.log(aMostrarlistado)
             
             mostrarListaProductos(aMostrarlistado);                                //Inicio la funcion para mostrar la lista de productos en el .json correspondiente.
         }else{
             alert("Hay problemas: "+resultObj.data);                //Si algo falla muestro un error.
-        }
+        };
     });
 
 
@@ -147,4 +146,4 @@ document.addEventListener("DOMContentLoaded", function(){           //Se espera 
 function redirigirInfo(nombre, ID){
     localStorage.setItem(nombre, ID)
     window.location.href="product-info.html";
-}
+};

@@ -189,9 +189,6 @@ a.custom-card:hover {
   color: orange;
 }
 
-
-
-
 form h1 {
   font-weight: bolder;
 }
@@ -211,7 +208,6 @@ form .error{
 form .bordeError{
   border-color: red;
 }
-
 
 .infostyle{
   margin: 20px;
